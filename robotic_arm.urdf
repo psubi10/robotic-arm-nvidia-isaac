@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<robot name="robotic_arm">
+
+  <!-- Base -->
+  <link name="base">
+    <visual>
+      <geometry>
+        <box size="0.3 0.3 0.1"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <!-- First Joint (Shoulder) -->
+  <joint name="joint_1" type="revolute">
+    <parent link="base"/>
+    <child link="arm_1"/>
+    <origin xyz="0 0 0.05"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-1.57" upper="1.57" effort="10" velocity="1.0"/>
+  </joint>
+
+  <!-- Upper Arm -->
+  <link name="arm_1">
+    <visual>
+      <geometry>
+        <cylinder length="0.5" radius="0.05"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <!-- Second Joint (Elbow) -->
+  <joint name="joint_2" type="revolute">
+    <parent link="arm_1"/>
+    <child link="arm_2"/>
+    <origin xyz="0 0 0.5"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-1.57" upper="1.57" effort="10" velocity="1.0"/>
+  </joint>
+
+  <!-- Lower Arm -->
+  <link name="arm_2">
+    <visual>
+      <geometry>
+        <cylinder length="0.5" radius="0.05"/>
+      </geometry>
+    </visual>
+  </link>
+
+</robot>
