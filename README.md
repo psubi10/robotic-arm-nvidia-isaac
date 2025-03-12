@@ -1,5 +1,5 @@
 # robotic-arm-nvidia-isaac
-# 🚀 Multi-Threaded Robotic Arm Simulation with NVIDIA Isaac Sim & C++
+# Multi-Threaded Robotic Arm Simulation with NVIDIA Isaac Sim & C++
 
 This project showcases a **real-time robotic arm simulation** using **C++ multithreading, URDF, and NVIDIA Isaac Sim**. Designed as a showcase for **NVIDIA careers**, it demonstrates **multi-threaded control, ROS 2 integration, and physics-based simulation**.
 
