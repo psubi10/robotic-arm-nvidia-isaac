@@ -15,11 +15,11 @@ public:
         joint_positions[1] += joint2_delta;
     }
 
-    // Function to simulate movement (runs in a separate thread)
+    // Function to simulate movement (runs in a separate thread).this separate thread continuously prints joint positions every 500ms.std::thread runs simulate_motion() independently.
     void simulate_motion() {
         while (running) {
             {
-                std::lock_guard<std::mutex> lock(joint_mutex);
+                std::lock_guard<std::mutex> lock(joint_mutex);//Uses std::mutex (std::lock_guard) to avoid race conditions.Ensures safe updates to joint positions.
                 std::cout << "Joint 1: " << joint_positions[0] 
                           << " | Joint 2: " << joint_positions[1] << std::endl;
             }
@@ -52,12 +52,15 @@ int main() {
     RoboticArm arm;
     arm.start(); // Start simulation
 
-    // Simulate joint movement (user input)
+    // Simulate joint movement (user input). This part is the  user-driven motion in robotic_arm.cpp file which is a console-based interactive control system in C++.his means the program:-
+    //✅ Takes user input dynamically
+    // ✅ Applies the input to update joint positions
+    //✅ Uses multithreading to show continuous joint motion
     for (int i = 0; i < 5; i++) {
         double j1, j2;
         std::cout << "Enter joint movements (J1 J2): ";
-        std::cin >> j1 >> j2;
-        arm.move_joints(j1, j2);
+        std::cin >> j1 >> j2;//user enters values (e.g., 0.1, -0.2)
+        arm.move_joints(j1, j2);//Updates the joint positions
     }
 
     arm.stop(); // Stop simulation
